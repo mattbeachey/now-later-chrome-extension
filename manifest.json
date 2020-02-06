@@ -11,7 +11,23 @@
     ],
     "browser_action": {
       "default_popup": "popup.html",  
-      "default_title": "Now"
+      "default_title": "Now & Later",
+      "default_icon": "./assets/icon.png"
     },
-    "permissions": ["tabs"]
+    "background": {
+      "page": "background.html"
+    },
+    "permissions": [
+      "tabs",
+      "identity"
+    ],
+    "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'; connect-src 'self' wss://*.firebaseio.com;",
+    "oauth2": {
+      "client_id": "1006117928571-lm402qdts3mm91v1bpl93gp2deakh4ag.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile"
+      ]
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxFu0sfcqW6oltt5bF9VtR0sK+JBEwNr3C4EZY1l/7j6ciliuflKkQ4xj2TIXCbMSCpwOqvCOpzgU1iON1ptfLelGj1b/buTdyf/7Wuu3uQJbANr69dLdhXL/5Y+d2HOlg6zg9MPa/4L6Gb+PHAcjuEiDfi0hZ29wrJMLi0uq9wDL0M0gRkl1Umn3sTKKBW5weLmjWuNN7PB6vX7AWqsXRu3w+Ey2vbaVufBOr2tT+6o8idjwkf5iXpR4p0oeBk/vyVpiyDQ8LQx8F1WDPZwsFLjPi/ck+Ii9UoHpA1vqIAT7/LA4CRCpJSYKp7rDJ/Ahk2SemWL/A4BOTOLJ3En6LwIDAQAB"
   }

@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Now & Later</title>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script> -->
+    <script src="popup.js"></script>
 </head>
 <body>
     <h3>Now and Later</h3>
     <button id="button">Click Me</button>
+    <h3>Firebase Authentication</h3>
 
-    
-<script src="popup.js"></script>
+    <div class="quickstart-user-details-container">
+      <button id="quickstart-button">Sign-in with Google</button>
+      <p>
+        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+        <div>Firebase auth <code>currentUser</code> object value:</div>
+        <pre><code id="quickstart-account-details">null</code></pre>
+      </p>
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,52 @@
+Item ID:	
+ceaodmimkdkddahdmampeabahainpkbn
+
+
+Public key:
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxFu0sfcqW6oltt5bF9Vt
+R0sK+JBEwNr3C4EZY1l/7j6ciliuflKkQ4xj2TIXCbMSCpwOqvCOpzgU1iON1ptf
+LelGj1b/buTdyf/7Wuu3uQJbANr69dLdhXL/5Y+d2HOlg6zg9MPa/4L6Gb+PHAcj
+uEiDfi0hZ29wrJMLi0uq9wDL0M0gRkl1Umn3sTKKBW5weLmjWuNN7PB6vX7AWqsX
+Ru3w+Ey2vbaVufBOr2tT+6o8idjwkf5iXpR4p0oeBk/vyVpiyDQ8LQx8F1WDPZws
+FLjPi/ck+Ii9UoHpA1vqIAT7/LA4CRCpJSYKp7rDJ/Ahk2SemWL/A4BOTOLJ3En6
+LwIDAQAB
+
+
+Client ID:
+1006117928571-lm402qdts3mm91v1bpl93gp2deakh4ag.apps.googleusercontent.com
+
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.8.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+
+Firebase CLI for web-app-side:
+npm install -g firebase-tools
+
+Deploy to Firebase Hosting
+You can deploy now or later. To deploy now, open a terminal window, then navigate to or create a root directory for your web app.
+
+Sign in to Google
+
+firebase login
+Initiate your project
+Run this command from your app’s root directory:
+
+
+firebase init
+When you’re ready, deploy your web app
+Put your static files (e.g., HTML, CSS, JS) in your app’s deploy directory (the default is “public”). Then, run this command from your app’s root directory:
+
+
+firebase deploy
+After deploying, view your app at now-and-later-265301.web.app
+docs: https://firebase.google.com/docs/hosting/quickstart?authuser=0
+above commands: https://console.firebase.google.com/project/now-and-later-265301/overview

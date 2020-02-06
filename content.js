@@ -4,7 +4,7 @@ const videoEl = document.querySelector("video")
 //listener for query from popup.js
 chrome.runtime.onMessage.addListener(function (videoUrl) {
 
-    //differentiates between types of youtube urls to extrude video id from full url
+    //differentiates between types of youtube urls to extract video id from full url
     if (videoUrl.includes("&")) {
         const videoId = videoUrl.split("?v=").pop()
         const newVideoId = videoId.split("&").shift();
