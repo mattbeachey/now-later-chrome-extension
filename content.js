@@ -10,11 +10,21 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
         const newVideoId = videoId.split("&").shift();
         const timeElapsed = (Math.floor(videoEl.currentTime))
         const timestampUrl = ("https://youtu.be/" + newVideoId + "?t=" + timeElapsed)
-        alert(timestampUrl)
+        // alert(timestampUrl)
+        chrome.runtime.sendMessage({
+            data: ("https://mattbeachey.com/?" + timestampUrl)
+        }, function (response) {
+            console.dir(response);
+        });
     } else {
         const videoId = videoUrl.split("?v=").pop()
         const timeElapsed = (Math.floor(videoEl.currentTime))
         const timestampUrl = ("https://youtu.be/" + videoId + "?t=" + timeElapsed)
-        alert(timestampUrl)
+        // alert(timestampUrl)
+        chrome.runtime.sendMessage({
+            data: ("https://mattbeachey.com/?" + timestampUrl)
+        }, function (response) {
+            console.dir(response);
+        });
     }
 })

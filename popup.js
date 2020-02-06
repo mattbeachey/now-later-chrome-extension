@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 })
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log(request.data)
+    }
+);
+
 
 // TODO(DEVELOPER): Change the values below using values from the initialization snippet: Firebase Console > Overview > Add Firebase to your web app.
 // Initialize Firebase
