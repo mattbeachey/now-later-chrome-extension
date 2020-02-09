@@ -9,20 +9,20 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
         const videoId = videoUrl.split("?v=").pop()
         const newVideoId = videoId.split("&").shift();
         const timeElapsed = (Math.floor(videoEl.currentTime))
-        const timestampUrl = ("https://youtu.be/" + newVideoId + "?t=" + timeElapsed)
+        const timestampUrl = ("https://youtu.be/" + newVideoId + "&t=" + timeElapsed)
         // alert(timestampUrl)
         chrome.runtime.sendMessage({
-            data: ("https://mattbeachey.com/?" + timestampUrl)
+            data: ("http://localhost:3000/add?url=" + timestampUrl + "&data1=value" + "&data2=value")
         }, function (response) {
             console.dir(response);
         });
     } else {
         const videoId = videoUrl.split("?v=").pop()
         const timeElapsed = (Math.floor(videoEl.currentTime))
-        const timestampUrl = ("https://youtu.be/" + videoId + "?t=" + timeElapsed)
+        const timestampUrl = ("https://youtu.be/" + videoId + "&t=" + timeElapsed)
         // alert(timestampUrl)
         chrome.runtime.sendMessage({
-            data: ("https://mattbeachey.com/?" + timestampUrl)
+            data: ("http://localhost:3000/add?url=" + timestampUrl  + "&data1=value" + "&data2=value")
         }, function (response) {
             console.dir(response);
         });
