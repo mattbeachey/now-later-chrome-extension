@@ -21,6 +21,7 @@ chrome.tabs.query({ currentWindow: true, active: true },
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         console.log(request.data)
+        // chrome.tabs.create({url: request.data, selected: false});
         var win = window.open(request.data, '_blank');
          win.focus();
     }
