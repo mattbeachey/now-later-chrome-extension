@@ -3,45 +3,63 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("button").addEventListener("click", saveNewVideoTimestamp)
 });
 
-    //     //queries current chrome tab for url
-    //     function getVideoURL() {
-    //         chrome.tabs.query({ currentWindow: true, active: true },
-    //             function (tabs) { 
-    //                 const currentUrl = tabs[0].url;
-    //                 chrome.tabs.sendMessage(tabs[0].id, currentUrl)
-    //             })
-    //     }
-    // })
+//     //queries current chrome tab for url
+//     function getVideoURL() {
+//         chrome.tabs.query({ currentWindow: true, active: true },
+//             function (tabs) { 
+//                 const currentUrl = tabs[0].url;
+//                 chrome.tabs.sendMessage(tabs[0].id, currentUrl)
+//             })
+//     }
+// })
 
-    chrome.tabs.query({ currentWindow: true, active: true },
-        function (tabs) {
-            const currentUrl = tabs[0].url;
-            chrome.tabs.sendMessage(tabs[0].id, currentUrl)
-        })
+chrome.tabs.query({ currentWindow: true, active: true },
+    function (tabs) {
+        const currentUrl = tabs[0].url;
+        chrome.tabs.sendMessage(tabs[0].id, currentUrl)
+    })
 
-    let addUrl = ""
+let addUrl = ""
 
-    chrome.runtime.onMessage.addListener(
-        function (request, sender, sendResponse) {
-            // console.log(request.data)
-            addUrl = request.data
-            // chrome.tabs.create({url: request.data, selected: false});
-            // const win = window.open(request.data, '_blank');
-            //  win.focus();
-        }
-    );
-
-    function saveNewVideoTimestamp() {
-        // console.log(addUrl)
-        const title = document.getElementById("title").value;
-        const notes = document.getElementById("notes").value;
-        const tags = document.getElementById("tags").value;
-        const finalUrl = addUrl + "&title=" + title + "&notes=" + notes + "&tags=" + tags
-        console.log("The Big One: " + finalUrl)
-        window.open(finalUrl, '_blank');
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        // console.log(request.data)
+        addUrl = request.data
+        // chrome.tabs.create({url: request.data, selected: false});
+        // const win = window.open(request.data, '_blank');
+        //  win.focus();
     }
+);
 
-    "&data1=value, value, value" + "&data2=value"
+function saveNewVideoTimestamp() {
+    // console.log(addUrl)
+    const title = document.getElementById("title").value;
+    const notes = document.getElementById("notes").value;
+    const tags = document.getElementById("tags").value;
+    const finalUrl = addUrl + "&title=" + title + "&notes=" + notes + "&tags=" + tags
+    console.log("The Big One: " + finalUrl)
+    const characterCheck = title + notes + tags
+    switch (true) {
+        case characterCheck.includes("/"):
+            document.getElementById("button").innerText = "No";
+            break;
+        case characterCheck.includes("?"):
+            document.getElementById("button").innerText = "No";
+            break;
+        case characterCheck.includes("="):
+            document.getElementById("button").innerText = "No";
+            break;
+        default:
+            window.open(finalUrl, '_blank');
+    }
+    // if (characterCheck.includes("/")) {
+    //     document.getElementById("button").innerText = "No"
+    // } else {
+    //     window.open(finalUrl, '_blank');
+    // }
+}
+
+"&data1=value, value, value" + "&data2=value"
 
 // // TODO(DEVELOPER): Change the values below using values from the initialization snippet: Firebase Console > Overview > Add Firebase to your web app.
 // // Initialize Firebase
