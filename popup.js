@@ -1,32 +1,47 @@
 //waits until chrome extension popup content has loaded before getting element
-// document.addEventListener('DOMContentLoaded', function () {
-//     document.getElementById("button").addEventListener("click", getVideoURL)
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("button").addEventListener("click", saveNewVideoTimestamp)
+});
 
-//     //queries current chrome tab for url
-//     function getVideoURL() {
-//         chrome.tabs.query({ currentWindow: true, active: true },
-//             function (tabs) { 
-//                 const currentUrl = tabs[0].url;
-//                 chrome.tabs.sendMessage(tabs[0].id, currentUrl)
-//             })
-//     }
-// })
+    //     //queries current chrome tab for url
+    //     function getVideoURL() {
+    //         chrome.tabs.query({ currentWindow: true, active: true },
+    //             function (tabs) { 
+    //                 const currentUrl = tabs[0].url;
+    //                 chrome.tabs.sendMessage(tabs[0].id, currentUrl)
+    //             })
+    //     }
+    // })
 
-chrome.tabs.query({ currentWindow: true, active: true },
-    function (tabs) { 
-        const currentUrl = tabs[0].url;
-        chrome.tabs.sendMessage(tabs[0].id, currentUrl)
-    })
+    chrome.tabs.query({ currentWindow: true, active: true },
+        function (tabs) {
+            const currentUrl = tabs[0].url;
+            chrome.tabs.sendMessage(tabs[0].id, currentUrl)
+        })
 
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        console.log(request.data)
-        // chrome.tabs.create({url: request.data, selected: false});
-        var win = window.open(request.data, '_blank');
-         win.focus();
+    let addUrl = ""
+
+    chrome.runtime.onMessage.addListener(
+        function (request, sender, sendResponse) {
+            // console.log(request.data)
+            addUrl = request.data
+            // chrome.tabs.create({url: request.data, selected: false});
+            // const win = window.open(request.data, '_blank');
+            //  win.focus();
+        }
+    );
+
+    function saveNewVideoTimestamp() {
+        // console.log(addUrl)
+        const title = document.getElementById("title").value;
+        const notes = document.getElementById("notes").value;
+        const tags = document.getElementById("tags").value;
+        const finalUrl = addUrl + "&title=" + title + "&notes=" + notes + "&tags=" + tags
+        console.log("The Big One: " + finalUrl)
+        window.open(finalUrl, '_blank');
     }
-);
 
+    "&data1=value, value, value" + "&data2=value"
 
 // // TODO(DEVELOPER): Change the values below using values from the initialization snippet: Firebase Console > Overview > Add Firebase to your web app.
 // // Initialize Firebase
@@ -40,7 +55,7 @@ chrome.runtime.onMessage.addListener(
 //     appId: "1:1006117928571:web:235c8e9c229d7f20bf2cde"
 //   };
 //   firebase.initializeApp(config);
-  
+
 //   /**
 //    * initApp handles setting up the Firebase context and registering
 //    * callbacks for the auth status.
@@ -84,10 +99,10 @@ chrome.runtime.onMessage.addListener(
 //       document.getElementById('quickstart-button').disabled = false;
 //     });
 //     // [END authstatelistener]
-  
+
 //     document.getElementById('quickstart-button').addEventListener('click', startSignIn, false);
 //   }
-  
+
 //   /**
 //    * Start the auth flow and authorizes to Firebase.
 //    * @param{boolean} interactive True if the OAuth flow should request with an interactive mode.
@@ -115,7 +130,7 @@ chrome.runtime.onMessage.addListener(
 //       }
 //     });
 //   }
-  
+
 //   /**
 //    * Starts the sign-in process.
 //    */
@@ -129,7 +144,7 @@ chrome.runtime.onMessage.addListener(
 //       startAuth(true);
 //     }
 //   }
-  
+
 //   window.onload = function() {
 //     initApp();
 //   };
