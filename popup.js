@@ -41,24 +41,28 @@ function saveNewVideoTimestamp() {
     const finalUrl = addUrl + "&title=" + title + "&notes=" + notes + "&tags=" + tags
     console.log("The Big One: " + finalUrl)
     const characterCheck = title + notes + tags
-    switch (true) {
-        case characterCheck.includes("/"):
-            document.getElementById("button").innerText = "No";
-            break;
-        case characterCheck.includes("?"):
-            document.getElementById("button").innerText = "No";
-            break;
-        case characterCheck.includes("="):
-            document.getElementById("button").innerText = "No";
-            break;
-        default:
-            window.open(finalUrl, '_blank');
+    if (tags.length < 45) {
+        if (title) {
+            switch (true) {
+                case characterCheck.includes("/"):
+                    document.getElementById("alert").innerText = '"/", "?", and "=" not allowed';
+                    break;
+                case characterCheck.includes("?"):
+                    document.getElementById("alert").innerText = '"/", "?", and "=" not allowed';
+                    break;
+                case characterCheck.includes("="):
+                    document.getElementById("alert").innerText = '"/", "?", and "=" not allowed';
+                    break;
+                default:
+                    window.open(finalUrl, '_blank');
+            }
+        } else {
+            document.getElementById("alert").innerText = 'Please name your timestamp';
+        }
+    } else {
+        document.getElementById("alert").innerText = 'Too many (or too long of) tags!';
     }
-    // if (characterCheck.includes("/")) {
-    //     document.getElementById("button").innerText = "No"
-    // } else {
-    //     window.open(finalUrl, '_blank');
-    // }
+
 }
 
 "&data1=value, value, value" + "&data2=value"
