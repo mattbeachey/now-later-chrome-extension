@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
 //     }
 // })
 
-chrome.tabs.query({ currentWindow: true, active: true },
-    function (tabs) {
-        const currentUrl = tabs[0].url;
-        chrome.tabs.sendMessage(tabs[0].id, currentUrl)
-    })
+setTimeout(function () {
+    chrome.tabs.query({ currentWindow: true, active: true },
+        function (tabs) {
+            const currentUrl = tabs[0].url;
+            chrome.tabs.sendMessage(tabs[0].id, currentUrl)
+        })
+},500)
 
 let addUrl = ""
 
