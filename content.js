@@ -16,8 +16,8 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const timestampUrl = ("https://youtu.be/" + newVideoId + "&t=" + timeElapsed)
             // alert(timestampUrl)
             chrome.runtime.sendMessage({
-                data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
-                // data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                // data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
             }, function (response) {
                 console.dir(response);
             });
@@ -27,8 +27,8 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const timestampUrl = ("https://youtu.be/" + videoId + "&t=" + timeElapsed)
             // alert(timestampUrl)
             chrome.runtime.sendMessage({
-                data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
-                // data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                // data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
             }, function (response) {
                 console.dir(response);
             });
