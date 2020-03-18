@@ -5,8 +5,8 @@
 chrome.runtime.onMessage.addListener(function (videoUrl) {
     console.log(videoUrl)
 
+    //locate video element
     const videoEl = document.querySelector("video")
-    console.log(">>>>>>>>>>>>>>> Did videoEl load?" + videoEl)
 
     //gets video's title
     const videoName = document.title.split(" - YouTube")[0]
@@ -17,7 +17,6 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const newVideoId = videoId.split("&").shift();
             const timeElapsed = (Math.floor(videoEl.currentTime))
             const timestampUrl = ("https://youtu.be/" + newVideoId + "&t=" + timeElapsed)
-            alert(timestampUrl)
             chrome.runtime.sendMessage({
                 data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName)
             }, function (response) {
@@ -27,7 +26,6 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const videoId = videoUrl.split("?v=").pop()
             const timeElapsed = (Math.floor(videoEl.currentTime))
             const timestampUrl = ("https://youtu.be/" + videoId + "&t=" + timeElapsed)
-            // alert(timestampUrl)
             chrome.runtime.sendMessage({
                 data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName)
             }, function (response) {
