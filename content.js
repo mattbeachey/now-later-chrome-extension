@@ -1,12 +1,15 @@
 
-const videoEl = document.querySelector("video")
-const videoName = document.title.split(" - YouTube")[0]
 
-console.log("TITLE::::::::::::::::::::::::::::::::::::: " + videoName)
 
 //listener for query from popup.js
 chrome.runtime.onMessage.addListener(function (videoUrl) {
+    console.log(videoUrl)
 
+    const videoEl = document.querySelector("video")
+    console.log(">>>>>>>>>>>>>>> Did videoEl load?" + videoEl)
+
+    //gets video's title
+    const videoName = document.title.split(" - YouTube")[0]
     //differentiates between types of youtube urls to extract video id from full url
     if (videoUrl.includes("youtube")) {
         if (videoUrl.includes("&")) {
@@ -14,10 +17,9 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const newVideoId = videoId.split("&").shift();
             const timeElapsed = (Math.floor(videoEl.currentTime))
             const timestampUrl = ("https://youtu.be/" + newVideoId + "&t=" + timeElapsed)
-            // alert(timestampUrl)
+            alert(timestampUrl)
             chrome.runtime.sendMessage({
-                // data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
-                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName)
             }, function (response) {
                 console.dir(response);
             });
@@ -27,8 +29,7 @@ chrome.runtime.onMessage.addListener(function (videoUrl) {
             const timestampUrl = ("https://youtu.be/" + videoId + "&t=" + timeElapsed)
             // alert(timestampUrl)
             chrome.runtime.sendMessage({
-                // data: ("http://localhost:3000/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
-                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName + "&data1=value, value, value" + "&data2=value")
+                data: ("https://now-and-later.netlify.com/add?url=" + timestampUrl + "&videoName=" + videoName)
             }, function (response) {
                 console.dir(response);
             });

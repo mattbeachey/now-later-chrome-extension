@@ -25,7 +25,7 @@ let addUrl = ""
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        // console.log(request.data)
+        console.log(request.data)
         addUrl = request.data
         // chrome.tabs.create({url: request.data, selected: false});
         // const win = window.open(request.data, '_blank');
